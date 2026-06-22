@@ -1,0 +1,14 @@
+name: Issues CI/CD pipeline with Github actions
+on:
+  issues:
+    types:
+      - opened
+    branches:
+      - master
+
+jobs:
+  run_on_issue_opened:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run log message
+        run: echo "Logged when issue created"
