@@ -1,0 +1,33 @@
+name: CI/CD pipeline with githubactions
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gitrepo
+        uses: actions/checkout@v5
+      - name: Running Test 
+        run: npm run test
+  
+  log-upon-test-success:
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Logging message
+        run: echo "Logged Successfully"
+  
+  run-server:
+    needs:
+      - log-upon-test-success
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v5
+      
+      - name: Running server
+        run: npm run server
+  
