@@ -2,6 +2,8 @@ name: Create dev branch CI/CD pipeline with Github actions
 on:
   create:
 
+  delete:
+
 jobs:
   run_on_branch_created:
     runs-on: ubuntu-latest
