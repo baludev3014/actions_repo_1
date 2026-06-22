@@ -2,21 +2,27 @@ name: CI/CD pipeline with githubactions
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout gitrepo
         uses: actions/checkout@v5
+
       - name: Running Test 
         run: npm run test
   
   log-upon-test-success:
+
     needs:
       - test
+
     runs-on: ubuntu-latest
+    
     steps:
       - name: Logging message
         run: echo "Logged Successfully"
